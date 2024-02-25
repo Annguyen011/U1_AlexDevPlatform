@@ -4,18 +4,22 @@ using UnityEngine;
 
 namespace U1
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [Header("Movement")]
+        public float moveSpeed;
+
+        private Rigidbody2D rb;
+
+        private void Awake()
         {
-        
+            rb = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-        
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
     }
 }
