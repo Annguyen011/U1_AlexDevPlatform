@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,21 +23,33 @@ namespace U1
         [Header("Key blinds")]
         [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
+        [Header("Animation name")]
+        [SerializeField] private string movingAnmt;
+
         private Rigidbody2D rb;
+        private Animator animator;
         #endregion
 
         #region Unity methods
         private void Awake()
         {
+            animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
+            AnimationCtrl();
+
             CollectionCheck();
             InputChecks();
 
             Move();
+        }
+
+        private void AnimationCtrl()
+        {
+            animator.SetBool(movingAnmt, movingInput != 0);
         }
 
         private void InputChecks()
