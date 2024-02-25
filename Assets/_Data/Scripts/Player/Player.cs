@@ -9,22 +9,24 @@ namespace U1
     public class Player : MonoBehaviour
     {
         #region Abilities
-        [Header("Movement")]
+        [Header("# Movement")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float jumpForce;
         private float movingInput;
         private bool canDoubleJump;
 
-        [Header("Ground detected")]
+        [Header("# Ground detected")]
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float groundCheckDistance;
         private bool isGrounded;
 
-        [Header("Key blinds")]
+        [Header("# Key blinds")]
         [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
-        [Header("Animation name")]
+        [Header("# Animation name")]
         [SerializeField] private string movingAnmt;
+        [SerializeField] private string groundedAnmt;
+        [SerializeField] private string yVelocityAnmt;
 
         private Rigidbody2D rb;
         private Animator animator;
@@ -50,6 +52,9 @@ namespace U1
         private void AnimationCtrl()
         {
             animator.SetBool(movingAnmt, movingInput != 0);
+            animator.SetBool(groundedAnmt, isGrounded);
+
+            animator.SetFloat(yVelocityAnmt, rb.velocity.y);
         }
 
         private void InputChecks()
