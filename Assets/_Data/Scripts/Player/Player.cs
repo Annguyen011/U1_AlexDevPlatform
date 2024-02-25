@@ -19,6 +19,8 @@ namespace U1
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float groundCheckDistance;
         private bool isGrounded;
+        private bool facingRight = true;
+        private int facingDirection = 1;
 
         [Header("# Key blinds")]
         [SerializeField] private KeyCode jumpKey = KeyCode.Space;
@@ -42,6 +44,7 @@ namespace U1
         private void Update()
         {
             AnimationCtrl();
+            FlipController();
 
             CollectionCheck();
             InputChecks();
@@ -61,12 +64,12 @@ namespace U1
         {
             movingInput = Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetKey(jumpKey))
+            if (Input.GetKeyDown(jumpKey))
             {
                 JumpButton();
             }
         }
-
+        #region Moving
         private void JumpButton()
         {
             if (isGrounded)
@@ -84,7 +87,28 @@ namespace U1
         {
             rb.velocity = new Vector2(moveSpeed * movingInput, rb.velocity.y);
         }
+        #endregion
+        #region Flip
+        private void FlipController()
+        {
+            if(facingRight && movingInput < 0)
+            {
+                Flip();
+            }
+            else if(!facingRight && movingInput > 0)
+            {
+                Flip();
+            }
+        }
 
+        private void Flip()
+        {
+            facingRight = !facingRight;
+            facingDirection *= -1;
+
+            transform.Rotate(0, 180, 0);
+        }
+        #endregion
         private void CollectionCheck()
         {
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);

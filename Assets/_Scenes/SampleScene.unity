@@ -385,6 +385,8 @@ MonoBehaviour:
   groundCheckDistance: 1.16
   jumpKey: 32
   movingAnmt: isMoving
+  groundedAnmt: isGrounded
+  yVelocityAnmt: yVelocity
 --- !u!95 &1488870086
 Animator:
   serializedVersion: 5
