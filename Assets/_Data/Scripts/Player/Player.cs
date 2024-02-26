@@ -55,6 +55,7 @@ namespace U1
             CollectionCheck();
             InputChecks();
 
+            Move();
         }
 
         #endregion
@@ -151,7 +152,6 @@ namespace U1
 
             if (!isWalleDetected)
             {
-                Move();
                 isallSliding = false;
                 canallSlide = false;
             }
