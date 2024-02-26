@@ -10,6 +10,7 @@ namespace U1
     {
         #region Abilities
         [Header("# Movement")]
+        [SerializeField] private Vector2 wallJumpDirection;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float jumpForce;
         private float movingInput;
@@ -84,7 +85,11 @@ namespace U1
         #region Moving
         private void JumpButton()
         {
-            if (isGrounded)
+            if(isWalleDetected)
+            { 
+                WallJump();
+            }
+            else if (isGrounded)
             {
                 Jump();
             }
@@ -93,6 +98,8 @@ namespace U1
                 canDoubleJump = false;
                 Jump();
             }
+
+            canallSlide = false;
         }
         private void Move()
         {
@@ -103,16 +110,21 @@ namespace U1
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+
+        private void WallJump()
+        {
+            rb.velocity = new Vector2(wallJumpDirection.x * -facingDirection, wallJumpDirection.y);
+        }
         #endregion
 
         #region Flip
         private void FlipController()
         {
-            if (facingRight && movingInput < 0)
+            if (facingRight && rb.velocity.x < 0)
             {
                 Flip();
             }
-            else if (!facingRight && movingInput > 0)
+            else if (!facingRight && rb.velocity.x > 0)
             {
                 Flip();
             }
