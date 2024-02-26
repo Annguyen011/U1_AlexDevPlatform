@@ -19,8 +19,10 @@ namespace U1
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float groundCheckDistance;
         [SerializeField] private float wallCheckDistance;
-        private bool isWalled;
+        private bool isWalleDetected;
         private bool isGrounded;
+        private bool canallSlide;
+        private bool isallSliding;
         private bool facingRight = true;
         private int facingDirection = 1;
 
@@ -29,6 +31,7 @@ namespace U1
 
         [Header("# Animation name")]
         [SerializeField] private string movingAnmt;
+        [SerializeField] private string slideAnmt;
         [SerializeField] private string groundedAnmt;
         [SerializeField] private string yVelocityAnmt;
 
@@ -51,7 +54,6 @@ namespace U1
             CollectionCheck();
             InputChecks();
 
-            Move();
         }
 
         #endregion
@@ -60,6 +62,7 @@ namespace U1
         {
             animator.SetBool(movingAnmt, movingInput != 0);
             animator.SetBool(groundedAnmt, isGrounded);
+            animator.SetBool(slideAnmt, isallSliding);
 
             animator.SetFloat(yVelocityAnmt, rb.velocity.y);
         }
@@ -67,6 +70,11 @@ namespace U1
         private void InputChecks()
         {
             movingInput = Input.GetAxisRaw("Horizontal");
+
+            if(Input.GetKeyDown(KeyCode.S))
+            {
+                canallSlide = false;
+            }
 
             if (Input.GetKeyDown(jumpKey))
             {
@@ -90,7 +98,7 @@ namespace U1
         {
             rb.velocity = new Vector2(moveSpeed * movingInput, rb.velocity.y);
         }
-        
+
         private void Jump()
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -100,11 +108,11 @@ namespace U1
         #region Flip
         private void FlipController()
         {
-            if(facingRight && movingInput < 0)
+            if (facingRight && movingInput < 0)
             {
                 Flip();
             }
-            else if(!facingRight && movingInput > 0)
+            else if (!facingRight && movingInput > 0)
             {
                 Flip();
             }
@@ -122,15 +130,35 @@ namespace U1
         private void CollectionCheck()
         {
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-            isWalled = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
+            isWalleDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
 
             if (isGrounded)
             {
                 canDoubleJump = true;
             }
+
+            if (!isWalleDetected)
+            {
+                Move();
+                isallSliding = false;
+                canallSlide = false;
+            }
+
+            if (isWalleDetected && rb.velocity.y < 0)
+            {
+                canallSlide = true;
+            }
+
+            if (canallSlide)
+            {
+                isallSliding = true;
+
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .1f);
+            }
+
         }
 
-        
+
 
         private void OnDrawGizmos()
         {
