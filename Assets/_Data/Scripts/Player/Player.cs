@@ -18,6 +18,8 @@ namespace U1
         [Header("# Ground detected")]
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float groundCheckDistance;
+        [SerializeField] private float wallCheckDistance;
+        private bool isWalled;
         private bool isGrounded;
         private bool facingRight = true;
         private int facingDirection = 1;
@@ -52,6 +54,8 @@ namespace U1
             Move();
         }
 
+        #endregion
+
         private void AnimationCtrl()
         {
             animator.SetBool(movingAnmt, movingInput != 0);
@@ -82,12 +86,17 @@ namespace U1
                 Jump();
             }
         }
-        #endregion
         private void Move()
         {
             rb.velocity = new Vector2(moveSpeed * movingInput, rb.velocity.y);
         }
+        
+        private void Jump()
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
         #endregion
+
         #region Flip
         private void FlipController()
         {
@@ -109,9 +118,11 @@ namespace U1
             transform.Rotate(0, 180, 0);
         }
         #endregion
+
         private void CollectionCheck()
         {
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+            isWalled = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
 
             if (isGrounded)
             {
@@ -119,14 +130,12 @@ namespace U1
             }
         }
 
-        private void Jump()
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+        
 
         private void OnDrawGizmos()
         {
             Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - groundCheckDistance));
+            Gizmos.DrawLine(transform.position, new Vector2(transform.position.x + wallCheckDistance * facingDirection, transform.position.y));
         }
     }
 }
