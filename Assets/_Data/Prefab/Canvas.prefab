@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 576c5c414cf7d734384742737c4b458f, type: 2}
-  m_sharedMaterial: {fileID: -9013017703732690749, guid: 576c5c414cf7d734384742737c4b458f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -204,8 +204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 7
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 576c5c414cf7d734384742737c4b458f, type: 2}
-  m_sharedMaterial: {fileID: -9013017703732690749, guid: 576c5c414cf7d734384742737c4b458f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: ReloadCurrentLevel
         m_Mode: 1
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: LoadNextLevel
         m_Mode: 1
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
@@ -2784,7 +2784,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: ReloadCurrentLevel
         m_Mode: 1
@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6023875779036115815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InGame_UI, Assembly-CSharp
         m_MethodName: PauseButton
         m_Mode: 1
@@ -2942,7 +2942,6 @@ GameObject:
   - component: {fileID: 6023875779036115813}
   - component: {fileID: 6023875779036115812}
   - component: {fileID: 6023875779036115739}
-  - component: {fileID: 6023875779036115815}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2992,7 +2991,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3036,28 +3037,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6023875779036115815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6023875779036115738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575a8966b8499964cb4b6b4994f43d48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inGameUI: {fileID: 6023875779065561422}
-  pauseUI: {fileID: 6023875778673122252}
-  endLevelUI: {fileID: 6023875777791434741}
-  joystick: {fileID: 7369436904443626368}
-  jumpButton: {fileID: 6023875779149428654}
-  timerText: {fileID: 6023875777440538013}
-  currentFruitAmount: {fileID: 6023875777442535848}
-  endTimerText: {fileID: 6023875778322865696}
-  endBestTimeText: {fileID: 6023875778650619457}
-  endFruitsText: {fileID: 6023875778461099534}
 --- !u!1 &6023875779046834175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,6 +3413,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6023875779036115814}
     m_Modifications:
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
@@ -3549,18 +3529,10 @@ PrefabInstance:
       value: 0.13725491
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec536a7718376554185e4a856d5ae230, type: 3}
---- !u!114 &7369436904443626368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
-  m_PrefabInstance: {fileID: 6023875778099733815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7369436904443626371 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
