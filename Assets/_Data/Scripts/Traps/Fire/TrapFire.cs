@@ -7,6 +7,7 @@ namespace U1
     public class TrapFire : Trap
     {
         public bool isWorking;
+        public bool hasSwitcher;
 
         private Animator animator;
 
@@ -17,7 +18,8 @@ namespace U1
 
         private void Start()
         {
-            InvokeRepeating(nameof(FireSwitch), 0, 3);
+            if(!hasSwitcher)
+                InvokeRepeating(nameof(FireSwitch), 0, 3);
         }
 
         private void Update()
@@ -25,7 +27,7 @@ namespace U1
             animator.SetBool("isworking", isWorking);
         }
 
-        private void FireSwitch()
+        public void FireSwitch()
         {
             isWorking = !isWorking;
         }
