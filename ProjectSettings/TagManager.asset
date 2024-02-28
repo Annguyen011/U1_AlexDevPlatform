@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Bullet
+  - Platform
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3812933411
+    locked: 0
+  - name: Trap
+    uniqueID: 3200443783
+    locked: 0
+  - name: Ground
+    uniqueID: 29124581
+    locked: 0
+  - name: Enemy
+    uniqueID: 1497589933
+    locked: 0
+  - name: Player
+    uniqueID: 2926718493
     locked: 0
