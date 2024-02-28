@@ -27,6 +27,11 @@ namespace U1
         private bool facingRight = true;
         private int facingDirection = 1;
 
+        [Header("# Knockback infos")]
+        [SerializeField] private Vector2 knockbackDirection;
+        private float knockbacktime;
+        private bool isKnock;
+
         [Header("# Key blinds")]
         [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
@@ -51,6 +56,11 @@ namespace U1
         {
             AnimationCtrl();
             FlipController();
+
+            if(isKnock)
+            {
+                return;
+            }
 
             CollectionCheck();
             InputChecks();
@@ -170,7 +180,19 @@ namespace U1
 
         }
 
+        public void KnockBack()
+        {
+            isKnock = true;
 
+            rb.velocity = new Vector2(knockbackDirection.x, knockbackDirection.y);
+
+            Invoke(nameof(CancelKnockBack), knockbacktime);
+        }
+
+        private void CancelKnockBack()
+        {
+            isKnock = false;
+        }
 
         private void OnDrawGizmos()
         {

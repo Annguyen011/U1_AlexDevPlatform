@@ -10,7 +10,7 @@ namespace U1
         {
             if(collision.CompareTag("Player"))
             {
-
+                collision.gameObject.GetComponent<Player>().KnockBack();
             }
         }
     }
