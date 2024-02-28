@@ -12,6 +12,7 @@ namespace U1
         [Header("# Ground detected")]
         [SerializeField] protected LayerMask whatIsGround;
         [SerializeField] protected float groundCheckDistance;
+        [SerializeField] protected float speed;
         [SerializeField] protected float wallCheckDistance;
         protected bool isWalleDetected;
         protected bool isGrounded;
@@ -26,14 +27,24 @@ namespace U1
         protected virtual void Update()
         {
             CollectionCheck();
+            WalkAround();
+        }
 
-            if(isWalleDetected)
+        protected virtual void WalkAround()
+        {
+            rb.velocity = new Vector2(speed * facingDirection, rb.velocity.y);
+            if (isWalleDetected || !isGrounded)
             {
                 Flip();
             }
         }
 
         public virtual void Damage()
+        {
+            Destroy(gameObject);
+        }
+
+        public void DestroyMe()
         {
             Destroy(gameObject);
         }
